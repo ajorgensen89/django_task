@@ -14,8 +14,6 @@ from pathlib import Path
 import os
 import dj_database_url
 import env
-from pathlib import Path
-import os
 
 if os.path.isfile("env.py"):
     import env
@@ -28,12 +26,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-r1vhvj=&0nud8^#45gvl35y+pq1j)#7jmwfs-u_!l0chplw(mi'
+# SECRET_KEY = 'django-insecure-r1vhvj=&0nud8^#45gvl35y+pq1j)#7jmwfs-u_!l0chplw(mi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-ajorgensen89-djangotask-op6vrh4zl2x.ws-eu97.gitpod.io']
+ALLOWED_HOSTS = ['8000-ajorgensen89-djangotask-ojbcobici2h.ws-eu97.gitpod.io']
+# '8000-ajorgensen89-djangotask-ojbcobici2h.ws-eu97.gitpod.io'
 
 
 # Application definition
