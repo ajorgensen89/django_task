@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 import dj_database_url
 
-
+development = os.environ.get('DEVELOPMENT', False)
 
 if os.path.isfile("env.py"):
     import env
@@ -30,9 +30,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'f379a912-2524-46a3-bef8-c0a289e2dc2e')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = development
+
 
 ALLOWED_HOSTS = ['8000-ajorgensen89-djangotask-ojbcobici2h.ws-eu97.gitpod.io', 'aj89-django-task.herokuapp.com', [os.environ.get('HEROKU_HOSTNAME')]]
+
+
 # '8000-ajorgensen89-djangotask-ojbcobici2h.ws-eu97.gitpod.io'
 # [os.environ.get('HEROKU_HOSTNAME')]
 
@@ -82,16 +85,17 @@ WSGI_APPLICATION = 'django_todo.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-}
+if development:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
 
 
 # Password validation
